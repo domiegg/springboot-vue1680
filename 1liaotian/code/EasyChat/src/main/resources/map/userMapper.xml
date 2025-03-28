@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.mccreefei.dao.UserDAO">
+    <!--通过用户名和密码查询-->
+    <select id="queryUser" resultType="cn.mccreefei.model.User">
+        SELECT id, name, password FROM user
+        WHERE name = #{name} AND password = #{password}
+    </select>
+    <!--通过用户名查询-->
+    <select id="queryUserByName" resultType="cn.mccreefei.model.User">
+        SELECT id, name, password FROM user
+        WHERE name = #{name}
+    </select>
+    <select id="getUserByName"  resultType="cn.mccreefei.model.User">
+        SELECT * FROM user
+        where name = #{name}
+        limit 1
+    </select>
+
+    <!--插入用户-->
+    <insert id="insertUser" >
+        INSERT INTO user(name, password) VALUES(#{name}, #{password})
+    </insert>
+</mapper>
